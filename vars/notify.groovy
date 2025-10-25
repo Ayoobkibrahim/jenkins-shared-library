@@ -29,8 +29,16 @@ def call(String buildStatus = 'UNKNOWN') {
             • URL: ${env.BUILD_URL}
             """
             break
-    }
+        default:
+            subject = "⚠️ UNKNOWN STATUS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+            body = """Pipeline ended with unknown status.
 
+            • Job: ${env.JOB_NAME}
+            • URL: ${env.BUILD_URL}
+            """
+            break
+    }
+    echo "📧 Sending email notification for ${buildStatus}..."
     mail to: 'ayoobkibrahim109@gmail.com',
         subject: subject,
         body: body
