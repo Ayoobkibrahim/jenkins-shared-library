@@ -1,6 +1,7 @@
 def call(String buildStatus = 'UNKNOWN') {
     def subject = ""
     def body = ""
+    
 
     switch (buildStatus) {
         case 'SUCCESS':
